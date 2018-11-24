@@ -1,7 +1,7 @@
-import casual from 'casual';
+import casual from 'casual'
 
 // seed it so we get consistent results
-casual.seed(777);
+casual.seed(777)
 
 const fakeItem = () => ({
   __typename: 'Item',
@@ -11,8 +11,8 @@ const fakeItem = () => ({
   image: 'dog-small.jpg',
   title: 'dogs are best',
   description: 'dogs',
-  largeImage: 'dog.jpg',
-});
+  largeImage: 'dog.jpg'
+})
 
 const fakeUser = () => ({
   __typename: 'User',
@@ -21,8 +21,8 @@ const fakeUser = () => ({
   email: casual.email,
   permissions: ['ADMIN'],
   orders: [],
-  cart: [],
-});
+  cart: []
+})
 
 const fakeOrderItem = () => ({
   __typename: 'OrderItem',
@@ -31,8 +31,8 @@ const fakeOrderItem = () => ({
   title: casual.words(),
   price: 4234,
   quantity: 1,
-  description: casual.words(),
-});
+  description: casual.words()
+})
 
 const fakeOrder = () => ({
   __typename: 'Order',
@@ -41,8 +41,8 @@ const fakeOrder = () => ({
   total: 40000,
   items: [fakeOrderItem(), fakeOrderItem()],
   createdAt: '2018-04 - 06T19: 24: 16.000Z',
-  user: fakeUser(),
-});
+  user: fakeUser()
+})
 
 const fakeCartItem = overrides => ({
   __typename: 'CartItem',
@@ -50,29 +50,29 @@ const fakeCartItem = overrides => ({
   quantity: 3,
   item: fakeItem(),
   user: fakeUser(),
-  ...overrides,
-});
+  ...overrides
+})
 
 // Fake LocalStorage
 class LocalStorageMock {
-  constructor() {
-    this.store = {};
+  constructor () {
+    this.store = {}
   }
 
-  clear() {
-    this.store = {};
+  clear () {
+    this.store = {}
   }
 
-  getItem(key) {
-    return this.store[key] || null;
+  getItem (key) {
+    return this.store[key] || null
   }
 
-  setItem(key, value) {
-    this.store[key] = value.toString();
+  setItem (key, value) {
+    this.store[key] = value.toString()
   }
 
-  removeItem(key) {
-    delete this.store[key];
+  removeItem (key) {
+    delete this.store[key]
   }
 }
 
@@ -82,5 +82,5 @@ export {
   fakeUser,
   fakeCartItem,
   fakeOrder,
-  fakeOrderItem,
-};
+  fakeOrderItem
+}
